@@ -23,7 +23,7 @@ abstract class Translatable implements TranslatableInterface
 	 *
 	 * @var array
 	 */
-	private final $translationsByCulture = null;
+	private $translationsByCulture = null;
 
 	/**
 	 * The culture to use by default.
