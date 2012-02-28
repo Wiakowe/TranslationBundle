@@ -5,9 +5,7 @@
  *
  * @package TranslationBundle
  */
-namespace Finday\TranslationBundle;
-
-use Finday\TranslationBundle\TranslatableInterface;
+namespace Finday\TranslationBundle\Translatable;
 
 /**
  * Class wich defines some methods required to make an object translatable.

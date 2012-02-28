@@ -21,7 +21,8 @@ Usage
 -----
 
 To use this bundle, you need to set the Entities that you want to be able to
-translate to extend the `Finday\TranslationBundle\Translatable` class.
+translate to extend the `Finday\TranslationBundle\Translatable\Translatable`
+class.
 
 This class requires the following methods to be defined in the Entity.
 

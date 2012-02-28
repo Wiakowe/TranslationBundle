@@ -4,7 +4,7 @@
  *
  * @package TranslationBundle
  */
-namespace Finday\TranslationBundle;
+namespace Finday\TranslationBundle\Translatable;
 
 /**
  * Interface wich defines the methods of a Translatable object.

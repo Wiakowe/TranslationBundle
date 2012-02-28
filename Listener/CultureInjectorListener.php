@@ -7,7 +7,7 @@
 namespace Finday\TranslationBundle\Listener;
 
 use Doctrine\ORM\Event\LifecycleEventArgs;
-use Finday\TranslationBundle\TranslatableInterface;
+use Finday\TranslationBundle\Translatable\TranslatableInterface;
 use Symfony\Component\HttpFoundation\Session;
 
 /**
