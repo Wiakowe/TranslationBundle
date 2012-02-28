@@ -45,8 +45,10 @@ class TranslationExtension extends Extension
 			$container->getDefinition('translation.listener.culture_injector_listener')
 				->addMethodCall('setCultureConverter',
 					array(
-						new Reference($culture_converter_config['service']),
-						$culture_converter_config['method']
+						array(
+							new Reference($culture_converter_config['service']),
+							$culture_converter_config['method']
+						)
 					)
 				);
 		}

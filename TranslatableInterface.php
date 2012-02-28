@@ -1,8 +1,8 @@
 <?php
 /**
  * TranslatableInterface.php
- * 
- * @package TranslationBundle 
+ *
+ * @package TranslationBundle
  */
 namespace Finday\TranslationBundle;
 
@@ -10,34 +10,34 @@ namespace Finday\TranslationBundle;
  * Interface wich defines the methods of a Translatable object.
  *
  * @author Roger Llopart Pla <roger@finday.com>
- * 
+ *
  * @version v.2.0.0
  */
 use Finday\TranslationBundle\Exception\LanguageNotFoundException;
 
 /**
- * Interface for Translatable. 
+ * Interface for Translatable.
  */
 interface TranslatableInterface
 {
 	/**
 	 * Sets the culture wich we want to work with.
 	 *
-	 * @param String $culture The culture in standard format(en_US, for example).
+	 * @param mixed $culture
 	 */
 	public function setCulture($culture);
 
 	/**
 	 * Gets the current culture.
 	 *
-	 * @return string $culture
+	 * @return mixed $culture
 	 */
 	public function getCulture();
 
 	/**
 	 * Gets the translation object.
 	 *
-	 * @param string $culture Optional parameter to retrieve an specified culture
+	 * @param mixed $culture Optional parameter to retrieve an specified culture
 	 * 	instead of the set one.
 	 *
 	 * @throws CultureNotDefinedException Thrown when it's called without the

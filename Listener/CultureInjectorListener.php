@@ -27,6 +27,8 @@ class CultureInjectorListener
 	protected $session;
 
 	/**
+	 * The callback to call to convert the culture into the format expected by
+	 * the entity.
 	 *
 	 * @var callable
 	 */
@@ -35,11 +37,18 @@ class CultureInjectorListener
 	/**
 	 * Returns the culture from the session object.
 	 *
-	 * @return string
+	 * @return mixed If there is no callback supplied, it'll default to an
+	 * ISO3166 string.
 	 */
 	protected function getCulture()
 	{
-		return $this->session->getLocale();
+		$culture = $this->session->getLocale();
+
+		if($this->callback) {
+			$culture = call_user_func($this->callback, $culture);
+		}
+
+		return $culture;
 	}
 
 	/**
@@ -52,9 +61,15 @@ class CultureInjectorListener
 		$this->session = $session;
 	}
 
-	public function setCultureConverter($object, $method)
+	/**
+	 * Sets the culture converter to the given callable.
+	 *
+	 * @param callable $callable A callable wich receives as it's only parameter a
+	 * locale in the the ISO3166 format.
+	 */
+	public function setCultureConverter($callable)
 	{
-		$this->callback = array($object, $method);
+		$this->callback = $callable;
 	}
 
 	/**
@@ -68,14 +83,7 @@ class CultureInjectorListener
 		$entity = $args->getEntity();
 
 		if ($entity instanceof TranslatableInterface) {
-			$culture = $this->getCulture();
-
-
-			if($this->callback) {
-				$culture = call_user_func($this->callback, $culture);
-			}
-
-			$entity->setCulture($culture);
+			$entity->setCulture($this->getCulture());
 		}
 	}
 }

@@ -28,13 +28,14 @@ abstract class Translatable implements TranslatableInterface
 	/**
 	 * The culture to use by default.
 	 *
-	 * @var string
+	 * @var mixed
 	 */
 	protected $culture = null;
 
 	/**
 	 * Set the culture
-	 * @param String $culture
+	 *
+	 * @param mixed $culture
 	 */
 	public function setCulture($culture)
 	{
@@ -43,7 +44,8 @@ abstract class Translatable implements TranslatableInterface
 
 	/**
 	 * Get the culture
-	 * @return String
+	 *
+	 * @return mixed
 	 */
 	public function getCulture()
 	{
@@ -52,7 +54,7 @@ abstract class Translatable implements TranslatableInterface
 
 	/**
 	 * Get the translation of the object
-	 * @param String $culture
+	 * @param mixed $culture
 	 *
 	 * @return TranslatableObject
 	 * @throws Exception\CultureNotDefinedException
@@ -92,7 +94,8 @@ abstract class Translatable implements TranslatableInterface
 	protected abstract function getTranslations();
 
 	/**
-	 * Returns the field wich is the translation identifier.
+	 * Returns the field wich is the translation identifier in the translation
+	 * entity.
 	 *
 	 * @return string
 	 */
