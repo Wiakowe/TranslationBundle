@@ -27,6 +27,12 @@ class CultureInjectorListener
 	protected $session;
 
 	/**
+	 *
+	 * @var callable
+	 */
+	protected $callback = null;
+
+	/**
 	 * Returns the culture from the session object.
 	 *
 	 * @return string
@@ -46,6 +52,11 @@ class CultureInjectorListener
 		$this->session = $session;
 	}
 
+	public function setCultureConverter($object, $method)
+	{
+		$this->callback = array($object, $method);
+	}
+
 	/**
 	 * Event wich will be called every time an object is loaded. If the object is
 	 * an instance of TranslatableInterface, it'll inject it the current culture.
@@ -57,7 +68,14 @@ class CultureInjectorListener
 		$entity = $args->getEntity();
 
 		if ($entity instanceof TranslatableInterface) {
-			$entity->setCulture($this->getCulture());
+			$culture = $this->getCulture();
+
+
+			if($this->callback) {
+				$culture = call_user_func($this->callback, $culture);
+			}
+
+			$entity->setCulture($culture);
 		}
 	}
 }
